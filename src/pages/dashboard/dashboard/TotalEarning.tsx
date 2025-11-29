@@ -9,7 +9,7 @@ const TotalEarning = () => {
         <div>
             <Card className="mb-6 rounded-lg shadow-sm border border-gray-200">
                 <div className="flex justify-between items-center mb-4">
-                    <h2 className="text-lg font-semibold">Total Earnings</h2>
+                    <h2 className="text-lg font-semibold">Chat User Growth Overview</h2>
                     <Select
                         value={selectedYear}
                         onChange={setSelectedYear}
@@ -47,9 +47,9 @@ const TotalEarning = () => {
                         <Line
                             type="monotone"
                             dataKey="value"
-                            stroke="#1e40af"
+                            stroke="#a855f7"
                             strokeWidth={2}
-                            dot={{ fill: '#1e40af', r: 4 }}
+                            dot={{ fill: '#a855f7', r: 4 }}
                             activeDot={{ r: 6 }}
                         />
                     </LineChart>

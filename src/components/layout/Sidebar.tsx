@@ -49,7 +49,7 @@ const Sidebar = () => {
 
                 <Link to="/">
                     <div className="flex flex-col gap-3 items-center justify-center p-5 pt-0 pb-2">
-                        <img src="/logo.png" alt="" className="h-14" />
+                        <img src="/favicon.svg" alt="" className="h-32" />
                     </div>
                 </Link>
 
@@ -62,12 +62,12 @@ const Sidebar = () => {
                             },
                             components: {
                                 Menu: {
-                                    itemActiveBg: '#003877',
+                                    itemActiveBg: '#a855f7',
                                     itemSelectedColor: '#fff',
                                     itemBorderRadius: '10px 10px 10px 10px' as any,
                                     itemHeight: 45,
                                     itemMarginBlock: 9,
-                                    itemSelectedBg: '#003877', 
+                                    itemSelectedBg: '#a855f7', 
                                     
                                 },
                             },

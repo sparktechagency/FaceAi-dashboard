@@ -13,6 +13,8 @@ import ErrorPage from '../pages/error/ErrorPage';
 import FAQCategoryPage from '../pages/dashboard/faq';
 import FAQs from '../pages/dashboard/faq/faqs';
 import NotificationPage from '../pages/dashboard/notification';
+import Administrators from '../pages/dashboard/administrators';
+import Payment from '../pages/dashboard/payment/Payment';
 
 const router = createBrowserRouter([
     {
@@ -22,7 +24,8 @@ const router = createBrowserRouter([
         children: [
             { path: '', element: <Dashboard /> },
             { path: 'users', element: <Users /> },
-            // study notes
+            { path: 'administrators', element: <Administrators /> },
+            { path: 'payment', element: <Payment /> },
             { path: 'profile', element: <Profile /> },
             { path: 'notification', element: <NotificationPage /> },
             { path: 'privacy-policy', element: <PrivacyPolicy /> },

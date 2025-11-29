@@ -1,6 +1,7 @@
 import { BsPatchQuestion } from 'react-icons/bs';
 import { TSidebarItem } from './generateSidebarItems';
 import { LuClipboardList } from 'react-icons/lu';
+import { FcConferenceCall } from 'react-icons/fc';
 
 const sidebarItems: TSidebarItem[] = [
     {
@@ -11,9 +12,21 @@ const sidebarItems: TSidebarItem[] = [
     },
     {
         key: 'users',
-        label: 'Users',
+        label: 'User Management',
         path: 'users',
         icon: '/icons/users.png',
+    },
+    {
+        key: 'administrators',
+        label: 'Administrators',
+        path: 'administrators',
+        icon: <FcConferenceCall size={22} />,
+    },
+    {
+        key: 'payment',
+        label: 'Payment',
+        path: 'payment',
+        icon: '/icons/earning.png',
     },
     {
         key: 'settings',

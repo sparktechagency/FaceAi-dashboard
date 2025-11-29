@@ -64,7 +64,7 @@ const FAQCategoryPage = () => {
             <div className="flex justify-between items-center mb-8">
                 <HeaderTitle title="FAQ Category" />
                 <button
-                    className="flex items-center gap-2 text-white bg-[#003877] border-0 h-[45px] px-6 rounded font-medium"
+                    className="flex items-center gap-2 text-white bg-[#a855f7] border-0 h-[45px] px-6 rounded font-medium"
                     onClick={() => setOpen(true)}
                 >
                     <span>
