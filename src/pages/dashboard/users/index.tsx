@@ -15,7 +15,7 @@ export default function Users() {
 
     // Modal states
     const [allScansModal, setAllScansModal] = useState(false);
-    // const [selectedUserForScans, setSelectedUserForScans] = useState<User | null>(null); 
+    // const [selectedUserForScans, setSelectedUserForScans] = useState<User | null>(null);
     const [scanDetailsModal, setScanDetailsModal] = useState(false);
     const [selectedScan, setSelectedScan] = useState<Scan | null>(null);
     const [actionModal, setActionModal] = useState(false);
@@ -34,7 +34,7 @@ export default function Users() {
     }, [users, searchQuery, statusFilter]);
 
     const handleViewAllScans = () => {
-        // setSelectedUserForScans(user); 
+        // setSelectedUserForScans(user);
         setAllScansModal(true);
     };
 
@@ -95,7 +95,7 @@ export default function Users() {
             />
 
             <ActionModal
-                isOpen={actionModal} 
+                isOpen={actionModal}
                 setIsOpen={setActionModal}
                 user={selectedUserForAction}
                 onToggleBlock={handleToggleBlock}

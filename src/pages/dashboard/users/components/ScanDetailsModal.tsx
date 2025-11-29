@@ -24,7 +24,7 @@ export function ScanDetailsModal({ isOpen, onClose, scan }: ScanDetailsModalProp
                 </div>
                 <div className="md:min-w-lg min-w-full   pt-5 whiteShadow rounded-2xl p-6 space-y-6 col-span-7">
                     <div>
-                        <h2 className="text-white text-lg font-medium mb-3">Key Strengths</h2>
+                        <h2 className="text-[#2F2F2F] text-lg font-medium mb-3">Key Strengths</h2>
                         <div className="space-y-2">
                             {keyStrengths.map((strength, index) => (
                                 <div
@@ -39,7 +39,7 @@ export function ScanDetailsModal({ isOpen, onClose, scan }: ScanDetailsModalProp
                     </div>
 
                     <div>
-                        <h2 className="text-white text-lg font-medium mb-3">Improvement Tips</h2>
+                        <h2 className="text-[#2F2F2F] text-lg font-medium mb-3">Improvement Tips</h2>
                         <div className="space-y-2">
                             {improvementTips.map((tip, index) => (
                                 <div key={index} className=" whiteShadow  rounded-[10px] px-4 py-3">
