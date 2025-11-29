@@ -1,15 +1,14 @@
 import { Button, Modal } from 'antd';
 import { ExclamationCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
-
 interface DeleteModalProps {
     isOpen: boolean;
-    onCancel: () => void;
-    handleDelete: () => void;
+    setIsOpen: (isOpen: boolean) => void;
+    // handleDelete ?: () => void; 
 }
 
-export default function DeleteModal({ isOpen, onCancel, handleDelete }: DeleteModalProps) {
+export default function DeleteModal({ isOpen, setIsOpen  }: DeleteModalProps) {
     return (
-        <Modal open={isOpen} onCancel={onCancel} title="Delete Item" footer={null} width={480} centered>
+        <Modal open={isOpen} onCancel={() => setIsOpen(false)} title="Delete Item" footer={null} width={480} centered>
             <div style={{ display: 'flex', gap: '12px', marginBottom: '16px' }}>
                 <ExclamationCircleOutlined style={{ fontSize: 32, color: '#ff4d4f' }} />
                 <div>
@@ -40,8 +39,8 @@ export default function DeleteModal({ isOpen, onCancel, handleDelete }: DeleteMo
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '8px' }}>
-                <Button onClick={onCancel}>Cancel</Button>
-                <Button onClick={handleDelete} danger>
+                <Button onClick={() => setIsOpen(false)} >Cancel</Button>
+                <Button onClick={() => setIsOpen(false)} danger>
                     Delete
                 </Button>
             </div>

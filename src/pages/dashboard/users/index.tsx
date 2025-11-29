@@ -1,124 +1,105 @@
-import { Button, Input, Table } from 'antd';
-import { EyeOutlined, LockOutlined } from '@ant-design/icons';
-import { User, userData } from '../../../demo-data/users.data';
-import { useState } from 'react';
-import UserModal from './UserModal';
-import BlockModal from './BlockModal';
-import HeaderTitle from '../../../components/shared/HeaderTitle';
+'use client';
 
-export default function Users({ dashboard }: { dashboard?: boolean }) {
-    const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
-    const [selectedUser, setSelectedUser] = useState<User | null>(null);
-    const [isBlockModalVisible, setIsBlockModalVisible] = useState<boolean>(false);
-    const [userToBlock, setUserToBlock] = useState<User | null>(null);
+import { useState, useMemo } from 'react';
+import { Scan, scansData, User, userData } from '../../../demo-data/user-data';
+import { UsersHeader } from './components/UsersHeader';
+import { UsersTable } from './components/UsersTable';
+import { AllScansModal } from './components/AllScansModal';
+import { ScanDetailsModal } from './components/ScanDetailsModal';
+import { ActionModal } from './components/ActionModal';
 
-    
-    const showUserDetails = (user: User) => {
-        setSelectedUser(user);
-        setIsModalVisible(true);
+export default function Users() {
+    const [searchQuery, setSearchQuery] = useState('');
+    const [statusFilter, setStatusFilter] = useState('all');
+    const [users, setUsers] = useState<User[]>(userData);
+
+    // Modal states
+    const [allScansModal, setAllScansModal] = useState(false);
+    const [selectedUserForScans, setSelectedUserForScans] = useState<User | null>(null);
+    const [scanDetailsModal, setScanDetailsModal] = useState(false);
+    const [selectedScan, setSelectedScan] = useState<Scan | null>(null);
+    const [actionModal, setActionModal] = useState(false);
+    const [selectedUserForAction, setSelectedUserForAction] = useState<User | null>(null);
+
+    const filteredUsers = useMemo(() => {
+        return users.filter((user) => {
+            const matchesSearch =
+                user.fullName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                user.email.toLowerCase().includes(searchQuery.toLowerCase());
+
+            const matchesStatus = statusFilter === 'all' || user.status === statusFilter;
+
+            return matchesSearch && matchesStatus;
+        });
+    }, [users, searchQuery, statusFilter]);
+
+    const handleViewAllScans = (user: User) => {
+        setSelectedUserForScans(user);
+        setAllScansModal(true);
     };
 
-    const handleModalClose = () => {
-        setIsModalVisible(false);
-        setSelectedUser(null);
+    const handleViewScanDetails = (scan: Scan) => {
+        setSelectedScan(scan);
+        setScanDetailsModal(true);
     };
 
-   const showBlockModal = (user: User) => {
-    setUserToBlock(user);
-    setIsBlockModalVisible(true);
-  };
+    const handleActionClick = (user: User) => {
+        setSelectedUserForAction(user);
+        setActionModal(true);
+    };
 
-  const handleBlockConfirm = () => {
-    // Handle block user logic here
-    console.log('Blocking user:', userToBlock);
-    setIsBlockModalVisible(false);
-    setUserToBlock(null);
-  };
+    const handleToggleBlock = (userId: string, isBlocking: boolean) => {
+        setUsers(
+            users.map((user) => (user.id === userId ? { ...user, status: isBlocking ? 'blocked' : 'active' } : user)),
+        );
+    };
 
-  const handleBlockCancel = () => {
-    setIsBlockModalVisible(false);
-    setUserToBlock(null);
-  };
-
-
-    const columns = [
-        {
-            title: 'Serial ID',
-            dataIndex: 'serialId',
-            key: 'serialId',
-            responsive: ['sm'] as any,
-        },
-        {
-            title: 'User Name',
-            dataIndex: 'userName',
-            key: 'userName',
-        },
-        {
-            title: 'Email',
-            dataIndex: 'email',
-            key: 'email',
-            responsive: ['md'] as any,
-        },
-        {
-            title: 'Contact Number',
-            dataIndex: 'contactNumber',
-            key: 'contactNumber',
-            responsive: ['lg'] as any,
-        },
-        {
-            title: 'Subscription',
-            dataIndex: 'subscription',
-            key: 'subscription',
-            responsive: ['sm'] as any,
-        },
-        {
-            title: 'Action',
-            key: 'action',
-            render: (_: any, record: User) => (
-                <div className="flex gap-2">
-                    <Button
-                        type="text"
-                        icon={<EyeOutlined />}
-                        className="text-gray-500 hover:text-blue-500"
-                        onClick={() => showUserDetails(record)}
-                    />
-                    <Button
-                        type="text"
-                        icon={<LockOutlined />}
-                        className={record?.status =="active"? "text-gray-500 hover:!text-red-500":"hover:!text-gray-500 !text-red-500"}
-                        onClick={() => showBlockModal(record)}
-                    />
-                </div>
-            ),
-        },
-    ];
+    const handleDeleteUser = (userId: string) => {
+        setUsers(users.filter((user) => user.id !== userId));
+        setActionModal(false);
+    };
 
     return (
         <>
-            <div className="rounded-lg shadow-sm border border-gray-200 p-4"> 
-                <div className="flex items-center justify-between mb-4">  
-                    <HeaderTitle title="Users" />
-                <Input placeholder="Search" className="" style={{ width: 280 , height: 40}} prefix={<i className="bi bi-search"></i>} />
-                </div>
-                <Table
-                    columns={columns}
-                    dataSource={userData}
-                    pagination={dashboard ? false : { pageSize: 9, total: userData.length }}
-                    className="custom-table"
+            <div
+                style={{
+                    padding: 24,
+                    borderRadius: 8,
+                    boxShadow:
+                        '0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02)',
+                    border: '1px solid #f0f0f0',
+                }}
+            >
+                <UsersHeader
+                    searchQuery={searchQuery}
+                    onSearchChange={setSearchQuery}
+                    statusFilter={statusFilter}
+                    onStatusFilterChange={setStatusFilter}
                 />
+
+                <UsersTable users={filteredUsers} onViewAllScans={handleViewAllScans} onAction={handleActionClick} />
             </div>
 
-            <UserModal
-                isModalVisible={isModalVisible}
-                handleModalClose={handleModalClose}
-                selectedUser={selectedUser}
+            {/* Modals */}
+            <AllScansModal
+                isOpen={allScansModal}
+                onClose={() => setAllScansModal(false)}
+                scans={scansData}
+                onViewScanDetails={handleViewScanDetails}
             />
 
-            <BlockModal
-                isBlockModalVisible={isBlockModalVisible}
-                handleBlockCancel={handleBlockCancel}
-                handleBlockConfirm={handleBlockConfirm}
-                isUserBlocked={userToBlock?.status !== 'active'}
+            <ScanDetailsModal
+                isOpen={scanDetailsModal}
+                onClose={() => setScanDetailsModal(false)}
+                scan={selectedScan}
+            />
+
+            <ActionModal
+                isOpen={actionModal} 
+                setIsOpen={setActionModal}
+                user={selectedUserForAction}
+                onToggleBlock={handleToggleBlock}
+                onDeleteUser={handleDeleteUser}
             />
         </>
     );
