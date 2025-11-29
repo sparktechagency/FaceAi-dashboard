@@ -1,5 +1,5 @@
 import { BsTrash } from 'react-icons/bs';
-import { Button, Flex, Popconfirm, Table } from 'antd';
+import { Button, Popconfirm, Table } from 'antd';
 import { useState } from 'react';
 import AdminModal from './AdminModal';
 import administratorsData from '../../../demo-data/administrators-data';
