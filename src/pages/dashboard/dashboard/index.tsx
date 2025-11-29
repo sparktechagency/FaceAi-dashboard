@@ -1,6 +1,7 @@
 
 import { Card } from 'antd';
 import TotalEarning from './TotalEarning';
+import UserChart from './UserChart';
 
 const App: React.FC = () => {
 
@@ -25,11 +26,13 @@ const App: React.FC = () => {
 
   return (
     <div className=" pb-5">
-      <div className=""> 
-        <div> 
-          
+      <div className="">
+        <div className='flex flex-col gap-y-2 py-5 px-[30px] rounded-lg shadow-sm border border-gray-200 mb-6'>
+          <p className='text-[#121212]'>Hi, Good Morning</p>
+          <h2 className='text-2xl font-semibold text-[#121212]'>Welcome Back to FaceAI Dashboard</h2>
         </div>
         {/* Stats Cards */}
+        <p className='text-2xl font-semibold text-[#121212] pb-3'>User’s Overview</p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
           <StatCard
             icon="/icons/users.png"
@@ -56,7 +59,16 @@ const App: React.FC = () => {
         </div>
 
         {/* Chart */}
-        <TotalEarning />
+        <div className="grid grid-cols-12  gap-2 items-center ">
+          <div className="col-span-6 ">
+            {/* total services */}
+
+            <TotalEarning />
+          </div>
+          <div className="col-span-6 ">
+            <UserChart />
+          </div>
+        </div>
 
       </div>
     </div>
