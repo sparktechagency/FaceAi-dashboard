@@ -15,10 +15,10 @@ interface ActionModalProps {
     onDeleteUser: (userId: string) => void;
 }
 
-export function ActionModal({ isOpen, user, onToggleBlock, onDeleteUser, setIsOpen }: ActionModalProps) {
+export function ActionModal({ isOpen, user, onToggleBlock, setIsOpen }: ActionModalProps) {
     const [isBlocked, setIsBlocked] = useState(user?.status === 'blocked');
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-    const [deleteId, setDeleteId] = useState('');
+    // const [deleteId, setDeleteId] = useState(''); 
     const handleToggleBlock = (checked: boolean) => {
         if (user) {
             setIsBlocked(checked);
@@ -81,7 +81,7 @@ export function ActionModal({ isOpen, user, onToggleBlock, onDeleteUser, setIsOp
                             icon={<DeleteOutlined />}
                             onClick={() => {
                                 setIsDeleteModalOpen(true);
-                                setDeleteId(user.id);
+                                // setDeleteId(user.id); 
                             }}
                         >
                             Delete

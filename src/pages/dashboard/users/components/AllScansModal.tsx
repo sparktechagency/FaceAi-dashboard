@@ -1,7 +1,6 @@
 'use client';
 
-import { Modal, Button, Space } from 'antd';
-import { EyeOutlined } from '@ant-design/icons';
+import { Modal, Space } from 'antd';
 import { Scan } from '../../../../demo-data/user-data';
 
 interface AllScansModalProps {
