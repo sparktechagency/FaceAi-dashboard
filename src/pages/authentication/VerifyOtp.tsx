@@ -27,7 +27,6 @@ const VerifyOtp = () => {
                     Input: {
                         // lineHeight: 3,
                         controlHeight: 50,
-
                         borderRadius: 10,
                     },
                 },
@@ -37,8 +36,8 @@ const VerifyOtp = () => {
             }}
         >
             <div className="flex  items-center justify-center h-screen p-5 " style={{}}>
-                <div className="bg-white max-w-[630px] w-full rounded-lg drop-shadow-2xl shadow-lg p-10 ">
-                    <div className="text-primaryText space-y-3 text-center mb-12 flex flex-col justify-center items-center">
+                <div className="bg-white max-w-[630px] w-full rounded-lg drop-shadow-2xl shadow-lg p-10 pt-0 ">
+                    <div className="text-primaryText space-y-3 text-center  flex flex-col justify-center items-center">
                         <img src="/favicon.svg" alt="" />
                         <h1 className="text-3xl  font-medium text-center mt-2 text-[#000]">Check your email</h1>
                         <p>We sent a reset link to {email} enter 5 digit code that mentioned in the email</p>
@@ -46,13 +45,13 @@ const VerifyOtp = () => {
 
                     <Form
                         name="normal_VerifyOtp"
-                        className="my-5"
+                        className="my-0"
                         layout="vertical"
                         initialValues={{ remember: true }}
                         onFinish={onFinish}
                     >
                         <Form.Item
-                            className="flex items-center justify-center mx-auto"
+                            className="flex items-center justify-center mx-auto  mt-5"
                             name="otp"
                             rules={[{ required: true, message: 'Please input otp code here!' }]}
                         >
@@ -68,7 +67,7 @@ const VerifyOtp = () => {
 
                         <Form.Item>
                             <Button
-                                className="!bg-primary"
+                                className="!bg-[#A855F7] mt-5"
                                 htmlType="submit"
                                 style={{
                                     height: 45,

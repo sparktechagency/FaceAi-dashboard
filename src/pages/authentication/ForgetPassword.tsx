@@ -29,7 +29,7 @@ const ForgetPassword = () => {
             }}
         >
             <div className="flex  items-center justify-center h-screen p-5 " style={{}}>
-                <div className="bg-white max-w-[630px] w-full  rounded-lg drop-shadow-2xl p-10 ">
+                <div className="bg-white max-w-[630px] w-full  rounded-lg drop-shadow-2xl p-10 pt-0 ">
                     <div className="flex flex-col justify-center items-center space-y-3 text-center mb-10">
                         <img src="/favicon.svg" alt="" />
                         <h1 className="text-3xl  font-medium text-center mt-2 text-[#000]">Forget Password</h1>

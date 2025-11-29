@@ -35,7 +35,7 @@ const Login = () => {
             }}
         >
             <div className="flex items-center justify-center p-5 h-screen  ">
-                <div className="bg-white max-w-[630px] w-full rounded-lg drop-shadow-2xl p-10 mb-10">
+                <div className="bg-white max-w-[630px] w-full rounded-lg drop-shadow-2xl p-10 pt-0 mb-10">
                     <div className=" flex flex-col justify-center items-center  !pb-3 text-center">
                         <img src="/favicon.svg" alt="" />
                         <h1 className="text-3xl text-[#000]  font-medium text-center mt-2">Login to Account!</h1>
