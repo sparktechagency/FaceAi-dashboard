@@ -1,6 +1,5 @@
 
 import { Card } from 'antd';
-import Users from '../users';
 import TotalEarning from './TotalEarning';
 
 const App: React.FC = () => {
@@ -26,7 +25,10 @@ const App: React.FC = () => {
 
   return (
     <div className=" pb-5">
-      <div className="">
+      <div className=""> 
+        <div> 
+          
+        </div>
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
           <StatCard
@@ -55,8 +57,7 @@ const App: React.FC = () => {
 
         {/* Chart */}
         <TotalEarning />
-        {/* Users Table */}
-        <Users dashboard />
+
       </div>
     </div>
   );

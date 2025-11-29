@@ -62,7 +62,7 @@ export default function NoteTab({
   return (
     <div
       style={{
-        // border: "1px solid #003877",
+        // border: "1px solid #a855f7",
         borderRadius: "11px",
         border: "none",
         // padding: "12px",
