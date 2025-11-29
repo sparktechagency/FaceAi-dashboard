@@ -2,7 +2,6 @@ import { Button, Checkbox, ConfigProvider, Form, FormProps, Input } from 'antd';
 import { FieldNamesType } from 'antd/es/cascader';
 import { Link, useNavigate } from 'react-router-dom';
 
-
 export type errorType = {
     data: {
         errorMessages: { message: string }[];
@@ -11,9 +10,7 @@ export type errorType = {
 };
 const Login = () => {
     const navigate = useNavigate();
-    const onFinish: FormProps<FieldNamesType>['onFinish'] = async() => {
-
-
+    const onFinish: FormProps<FieldNamesType>['onFinish'] = async () => {
         navigate('/');
     };
 
@@ -21,7 +18,7 @@ const Login = () => {
         <ConfigProvider
             theme={{
                 token: {
-                    colorPrimary: '#083A65',
+                    colorPrimary: '#A855F7',
 
                     colorBgContainer: '#F1F4F9',
                 },
@@ -37,11 +34,12 @@ const Login = () => {
                 },
             }}
         >
-            <div className="flex items-center justify-center p-5 h-screen  " >
-                <div className="bg-white max-w-[630px] w-full rounded-lg drop-shadow-2xl p-10 ">
-                    <div className=" space-y-5 !pb-3 text-center">
+            <div className="flex items-center justify-center p-5 h-screen  ">
+                <div className="bg-white max-w-[630px] w-full rounded-lg drop-shadow-2xl p-10 mb-10">
+                    <div className=" flex flex-col justify-center items-center  !pb-3 text-center">
+                        <img src="/favicon.svg" alt="" />
                         <h1 className="text-3xl text-[#000]  font-medium text-center mt-2">Login to Account!</h1>
-                        <p className='text-xl text-gray-400'>Please enter your email and password to continue</p>
+                        <p className="text-xl text-gray-400">Please enter your email and password to continue</p>
                     </div>
 
                     <Form
@@ -75,7 +73,7 @@ const Login = () => {
                             <Input.Password placeholder="Enter your password" className=" h-12  px-6" />
                         </Form.Item>
 
-                        <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center justify-between mb-12">
                             <Form.Item name="remember" valuePropName="checked" noStyle>
                                 <Checkbox className="text-primaryText text-lg">Remember me</Checkbox>
                             </Form.Item>
@@ -86,14 +84,14 @@ const Login = () => {
 
                         <Form.Item>
                             <Button
-                            className='!bg-primary'
+                                className="!bg-[#A855F7]"
                                 htmlType="submit"
                                 style={{
                                     height: 45,
                                     width: '100%',
                                     fontWeight: 500,
                                     color: '#fff',
-                                    fontSize: 20,                                    
+                                    fontSize: 20,
                                 }}
                                 // onClick={() => navigate('/')}
                             >

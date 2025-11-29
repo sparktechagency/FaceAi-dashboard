@@ -13,12 +13,11 @@ const VerifyOtp = () => {
     const email = getFromLocalStorage('forgetEmail');
 
     const onFinish: FormProps<FieldNamesType>['onFinish'] = (values) => {
-        const token = localStorage.getItem('resetToken')||'true'
+        const token = localStorage.getItem('resetToken') || 'true';
         if (token) {
             navigate('/new-password', { state: { token: token, email: email } });
         }
         console.log('Received values of form: ', values);
-        
     };
 
     return (
@@ -33,13 +32,14 @@ const VerifyOtp = () => {
                     },
                 },
                 token: {
-                    colorPrimary: '#083A65',
+                    colorPrimary: '#A855F7',
                 },
             }}
         >
             <div className="flex  items-center justify-center h-screen p-5 " style={{}}>
                 <div className="bg-white max-w-[630px] w-full rounded-lg drop-shadow-2xl shadow-lg p-10 ">
-                    <div className="text-primaryText space-y-3 text-center">
+                    <div className="text-primaryText space-y-3 text-center mb-12 flex flex-col justify-center items-center">
+                        <img src="/favicon.svg" alt="" />
                         <h1 className="text-3xl  font-medium text-center mt-2 text-[#000]">Check your email</h1>
                         <p>We sent a reset link to {email} enter 5 digit code that mentioned in the email</p>
                     </div>
@@ -68,14 +68,14 @@ const VerifyOtp = () => {
 
                         <Form.Item>
                             <Button
-                            className='!bg-primary'
+                                className="!bg-primary"
                                 htmlType="submit"
                                 style={{
                                     height: 45,
                                     width: '100%',
                                     fontWeight: 500,
                                     color: '#fff',
-                                    fontSize: 20,                                    
+                                    fontSize: 20,
                                 }}
                                 // onClick={() => navigate('/')}
                             >
