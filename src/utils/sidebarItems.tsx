@@ -19,7 +19,7 @@ const sidebarItems: TSidebarItem[] = [
     {
         key: 'administrators',
         label: 'Administrators',
-        path: 'Administrators',
+        path: 'administrators',
         icon: <FcConferenceCall size={22} />,
     },
     {
